@@ -18,11 +18,14 @@ export function handleAnswerSubmit(pollID, option) {
         const { authedUser } = getState()
         dispatch(showLoading())
         submitAnswer({authedUser, pollID, option})
-            .catch((_) => alert('Error occurred, please try again!'))
+            .catch((_) => {
+                alert('Error occurred, please try again!')
+                dispatch(hideLoading())
+            })
             .then((_) => {
                 dispatch(addAnswer(authedUser, pollID, option))
                 dispatch(addVote(authedUser, pollID, option))
+                dispatch(hideLoading())
             })
-        dispatch(hideLoading())
     }
 }

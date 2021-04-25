@@ -48,10 +48,11 @@ export function handleAddPoll(optionOne, optionTwo) {
         })
         .catch((_) => {
             alert('Something went terribly wrong! Please try again.')
+            dispatch(hideLoading())
         }).then((poll) => {
             dispatch(createPoll(poll))
             dispatch(addPoll(poll))
+            dispatch(hideLoading())
         })
-        dispatch(hideLoading())
     }
 }
