@@ -15,7 +15,7 @@ import { handleInitialData } from './actions/shared'
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    this.props.handleInitialData()
   }
 
   render () {
@@ -25,7 +25,7 @@ class App extends Component {
             <LoadingBar />
             <Switch>
               <Route exact path='/login' component={Login} />
-              <Route exact path='/404' component={NotFound}/>
+              <AuthRoute exact path='/404' component={NotFound}/>
               <Route>
                 <div className='container'>
                   {this.props.loading === true
@@ -34,9 +34,9 @@ class App extends Component {
                         <Nav />
                         <Switch>
                           <AuthRoute exact path='/' component={Dashboard} />
-                          <AuthRoute exact path='/new' component={NewPoll}/>
-                          <AuthRoute exact path='/leader' component={LeaderBoard} />
-                          <AuthRoute path='/poll/:id' component={Poll}/>
+                          <AuthRoute exact path='/add' component={NewPoll}/>
+                          <AuthRoute exact path='/leaderboard' component={LeaderBoard} />
+                          <AuthRoute path='/questions/:id' component={Poll}/>
                           <Redirect to='/404'/>
                         </Switch>
                     </div>)}
@@ -55,4 +55,4 @@ function mapStateToProps({ loadingBar }) {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {handleInitialData})(App);
