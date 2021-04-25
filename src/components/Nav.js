@@ -5,8 +5,8 @@ import { clearAuthedUser } from '../actions/authedUser'
 
 const Tabs = [
     {route: '/', name: 'Home'},
-    {route: '/new', name: 'New Question'},
-    {route: '/leader', name: 'Leader Board'},
+    {route: '/add', name: 'New Question'},
+    {route: '/leaderboard', name: 'Leader Board'},
 ]
 
 class Nav extends Component {
@@ -20,7 +20,6 @@ class Nav extends Component {
     render() {
         const { user } = this.props
         const currentURL = this.props.history.location.pathname
-        console.log('URL: ', currentURL)
         return (
             <div className="hero-head">
                 <div className='hero has-text-centered'>

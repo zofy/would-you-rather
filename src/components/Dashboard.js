@@ -35,7 +35,7 @@ function PollsList(props) {
                                             </div>
                                             <Link
                                                 className='button is-success is-outlined is-fullwidth'
-                                                to={`/poll/${p.id}`}>
+                                                to={`/questions/${p.id}`}>
                                                 View Poll
                                             </Link>
                                         </div>

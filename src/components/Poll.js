@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 import { handleAnswerSubmit } from '../actions/shared'
 
 function PollForm(props) {
@@ -70,7 +71,11 @@ class Poll extends Component {
     }
 
     render() {
-        const { user, author, poll, answered } = this.props
+        const { user, author, poll } = this.props
+        if (poll === undefined) {
+            return <Redirect to='/404'/>
+        }
+        const answered = user.answers[poll.id] !== undefined
         return (
             <div className='hero-body'>
                 <div className='container has-text-centered'>
@@ -114,13 +119,11 @@ function mapStateToProps({ authedUser, users, polls}, props) {
     const { id } = props.match.params
     const user = users[authedUser]
     const poll = polls[id]
-    const author = users[poll.author]
-    const answered = user.answers[poll.id] !== undefined
+    const author = (poll === undefined) ? undefined : users[poll.author]
     return {
         user,
         author,
         poll,
-        answered,
     }
 }
 

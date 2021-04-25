@@ -18,7 +18,7 @@ class Login extends Component {
         e.preventDefault()
         if (e.target.users.value === "") { return }
         this.props.dispatch(setAuthedUser(e.target.users.value))
-        this.props.history.push('/')
+        this.props.history.push(this.props.location.state.referrer)
     }
 
     render() {
