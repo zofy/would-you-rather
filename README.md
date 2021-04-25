@@ -1,10 +1,23 @@
-# Getting Started with Create React App
+# Would You Rather App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Would-You-Rather app is a simple `React` app created mainly for educational purposes. The app offers several views:
+* `/login` - to authenticate
+* `/` - dashboard displaying un/answered questions
+* `/add` - create new question
+* `/leaderboard` - list of users sorted based on the number of ansered and created questions
+* `/questions/<questionID>` - detail view of the un/answered question
+
+Each view is accessible only to authenticated users and if user tries to navigate to a non-existing route, `404 - Not Found` view is displayed.
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Installs all of the dependencies required for the app and specified in the `package.json`.
 
 ### `npm start`
 
